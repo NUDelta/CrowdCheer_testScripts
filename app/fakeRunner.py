@@ -212,3 +212,58 @@ def bDaySims(users):
         except ResourceRequestBadRequest:
             print "Probably reached limit, waiting 1 minute"
             sleep(60)
+
+####### Question SIMILARITIES ########
+
+questionPrimerDict = {
+    "q_one" : ['%s is a White Sox fan too!', '%s is a Cubs fan too!'],
+    "q_two" : ['%s is another Nike runner too!', '%s is another Reebok too!'],
+    "q_three" : ['%s is a coffee drinker too!', '%s is a tea drinker too!'],
+    "q_four" : ['%s is also a dog person!', '%s is also a cat person!'],
+    "q_five" : ['%s prefers it hot too', '%s prefers it cold too!']
+}
+
+def userSimilarities(this_user, other_user):
+    question_fields = ['q_one','q_two','q_three','q_four','q_five']
+    sames = []
+    primer = None
+    for i in range(len(question_fields)):
+        if this_user.has_key(question_fields[i]) and other_user.has_key(question_fields[i]):
+            if this_user[question_fields[i]] == other_user[question_fields[i]]:
+                sames.append(questionPrimerDict[question_fields[i]][this_user[question_fields[i]]])
+    if len(sames) > 0:
+        primer = random.choice(sames) % other_user['name']
+    return primer
+
+# q_similarity class
+class QuestionSimilarity(Object):
+    def __init__(self,this_user,other_user,primer):
+        super(Object, self).__init__()
+        self.this_user = this_user
+        self.other_user = other_user
+        self.primer = primer
+
+def computeQuestionSimilarities(users):
+    q_similarities = []
+
+    from random import choice
+    for this_user in users:
+        for other_user in users:
+            primer = userSimilarities(this_user, other_user)
+            q_sim = QuestionSimilarity(this_user['objectId'], other_user['objectId'], primer)
+            q_similarities.append(q_sim)
+
+    request_limit = 30 # We currently have a 30 requests per second Parse request limit
+    batches = [q_similarities[x:x+request_limit] for x in xrange(0, len(q_similarities), request_limit)]
+    print "%s batches : %s minutes to upload" % (len(batches), len(batches)/60.)
+
+    count = 0
+    for batch in batches:
+        count += 1
+        print "Uploading batch #%s out of %s" % (count, len(batches))
+        try:
+            batcher.batch_save(batch)
+            sleep(1)
+        except ResourceRequestBadRequest:
+            print "Probably reached limit, waiting 1 minute"
+            sleep(60)

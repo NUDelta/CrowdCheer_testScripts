@@ -12,6 +12,7 @@ def index():
     '''
     users = fr.getAllUsers()
     fr.bDaySims(users)
+    fr.computeQuestionSimilarities(users)
     #get the next url
     return "<h1>working</h1>"
 
