@@ -1,4 +1,5 @@
 import os
+import fakeRunner as fr
 from flask import Flask,redirect, render_template, json, jsonify, request
 
 app = Flask(__name__)
@@ -13,8 +14,10 @@ def index():
     return "<h1>working</h1>"
 
 
-@app.route('/restart/')
-def restart():
+@app.route('/fakerun/')
+def fakeRun():
+    qs = fr.getRunnerQuerySet()
+    fakeRunner.fakeNewRun(qs, 1, 40)
     return "Restarted!"
 
 if __name__ == "__main__":
