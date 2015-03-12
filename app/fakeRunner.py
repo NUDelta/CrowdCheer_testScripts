@@ -180,7 +180,7 @@ def bDaySims(users):
                 primer = "You and %s have the same birth day!" % other_user['name']
                 match_count += 1
             elif (this_user['sign'] == other_user['sign']):
-                primer = "You and %s are both %s!" % (other_user['objectId'], other_user['sign'])
+                primer = "You and %s are both %s!" % (other_user['name'], other_user['sign'])
                 match_count += 1
             elif (this_user['birthMonth'] == other_user['birthMonth']):
                 primer = "You and %s are both born in %s" % (other_user['name'], other_user['birthMonth'])
