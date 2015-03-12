@@ -10,6 +10,8 @@ def index():
     ''' This method is going to be where things go that need to happen when someone requests
         the main page
     '''
+    users = fr.getAllUsers()
+    fr.bDaySims(users)
     #get the next url
     return "<h1>working</h1>"
 
@@ -18,7 +20,7 @@ def index():
 def fakeRun():
     qs = fr.getRunnerQuerySet()
     fr.fakeNewRun(qs, 1, 40)
-    return "Restarted!"
+    return "<h1>Runner is running!</h1>"
 
 if __name__ == "__main__":
     ''' This is where stuff goes that will need to run when the server is started
