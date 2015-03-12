@@ -17,7 +17,7 @@ def index():
 @app.route('/fakerun/')
 def fakeRun():
     qs = fr.getRunnerQuerySet()
-    fakeRunner.fakeNewRun(qs, 1, 40)
+    fr.fakeNewRun(qs, 1, 40)
     return "Restarted!"
 
 if __name__ == "__main__":
