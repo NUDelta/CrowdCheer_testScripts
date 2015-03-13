@@ -5,7 +5,7 @@ from flask import Flask,redirect, render_template, json, jsonify, request
 app = Flask(__name__)
 #load the file, make it global
 
-@app.route('/similarities/')
+@app.route('/commonality/')
 def index():
     ''' This method is going to be where things go that need to happen when someone requests
         the main page

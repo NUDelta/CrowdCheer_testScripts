@@ -9,6 +9,7 @@ from parse_rest.datatypes import Object, GeoPoint
 batcher = ParseBatcher()
 import datetime
 from time import sleep
+import random
 from settings_local import *
 register(APPLICATION_ID, REST_API_KEY, master_key=MASTER_KEY)
 
