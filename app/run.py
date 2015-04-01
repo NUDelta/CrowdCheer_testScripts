@@ -1,7 +1,7 @@
 import os
 import fakeRunner as fr
 from flask import Flask,redirect, render_template, json, jsonify, request
-
+import thread
 app = Flask(__name__)
 #load the file, make it global
 
@@ -20,7 +20,7 @@ def index():
 @app.route('/fakerun/')
 def fakeRun():
     qs = fr.getRunnerQuerySet()
-    fr.fakeNewRun(qs, 1, 40)
+    thread.start_new_thread(fr.fakeNewRun, (qs, 1, 40))
     return "<h1>Runner is running!</h1>"
 
 if __name__ == "__main__":
