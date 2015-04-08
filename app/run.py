@@ -4,7 +4,7 @@ from flask import Flask,redirect, render_template, json, jsonify, request
 import thread
 app = Flask(__name__)
 #load the file, make it global
-
+csvOfRun = None
 @app.route('/commonality/')
 def index():
     ''' This method is going to be where things go that need to happen when someone requests
@@ -19,12 +19,13 @@ def index():
 
 @app.route('/fakerun/')
 def fakeRun():
-    qs = fr.getRunnerQuerySet()
-    thread.start_new_thread(fr.fakeNewRun, (qs, 1, 40))
+    global csvOfRun
+    thread.start_new_thread(fr.fakeNewRun, (csvOfRun, 1, 40))
     return "<h1>Runner is running!</h1>"
 
 if __name__ == "__main__":
     ''' This is where stuff goes that will need to run when the server is started
      '''
+    csvOfRun = open('fakeRunnerInSF.csv', 'r').readlines()
     app.debug = True
     app.run()
