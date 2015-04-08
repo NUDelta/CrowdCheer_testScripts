@@ -20,7 +20,7 @@ def index():
 @app.route('/fakerun/')
 def fakeRun():
     global csvOfRun
-    thread.start_new_thread(fr.fakeNewRun, (csvOfRun, 1, 40))
+    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 40))
     return "<h1>Runner is running!</h1>"
 
 if __name__ == "__main__":
