@@ -26,6 +26,7 @@ def fakeRun():
 if __name__ == "__main__":
     ''' This is where stuff goes that will need to run when the server is started
      '''
+     global csvOfRun
     csvOfRun = open('fakeRunnerInSF.csv', 'r').readlines()
     app.debug = True
     app.run()
