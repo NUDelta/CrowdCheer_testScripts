@@ -20,8 +20,8 @@ def index():
 @app.route('/fakerun/')
 def fakeRun():
     global csvOfRun
-    if !csvOfRun:
-        csvOfRun = open('fakeRunnerInSF.csv', 'r').readlines()
+    if csvOfRun == None:
+        csvOfRun = open('./static/data/fakeRunnerInSF.csv', 'r').readlines()
     thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 40))
     return "<h1>Runner is running!</h1>"
 
@@ -29,6 +29,6 @@ if __name__ == "__main__":
     ''' This is where stuff goes that will need to run when the server is started
     '''
     global csvOfRun
-    csvOfRun = open('fakeRunnerInSF.csv', 'r').readlines()
+    csvOfRun = open('./static/data/fakeRunnerInSF.csv', 'r').readlines()
     app.debug = True
     app.run()
