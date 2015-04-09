@@ -20,6 +20,8 @@ def index():
 @app.route('/fakerun/')
 def fakeRun():
     global csvOfRun
+    if !csvOfRun:
+        csvOfRun = open('fakeRunnerInSF.csv', 'r').readlines()
     thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 40))
     return "<h1>Runner is running!</h1>"
 
