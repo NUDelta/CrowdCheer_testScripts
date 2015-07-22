@@ -21,8 +21,8 @@ def index():
 def fakeRun():
     global csvOfRun
     if csvOfRun == None:
-        csvOfRun = open('./static/data/fakeRunnerInSF.csv', 'r').readlines()
-    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 40))
+        csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
+    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 363))
     return "<h1>Runner is running!</h1>"
 
 if __name__ == "__main__":

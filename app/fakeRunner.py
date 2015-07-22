@@ -64,7 +64,7 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length):
     1 is going to send the next location every 1 second,
      and will do this for 40 seconds
     '''
-    u = User.login("scott", "scott")
+    u = User.login("delta5", "pwd")
     updateNum = 0
     for line in csvLines[1:]:
         lat, lon, time, username, user_objid, dist, runT = line.strip().split(",")
