@@ -21,14 +21,14 @@ def index():
 def fakeRun():
     global csvOfRun
     if csvOfRun == None:
-        csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
-    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196))
+        csvOfRun = open('./static/data/fakeRunnersInEv.csv', 'r').readlines()
+    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 586))
     return "<h1>Runner is running!</h1>"
 
 if __name__ == "__main__":
     ''' This is where stuff goes that will need to run when the server is started
     '''
     global csvOfRun
-    csvOfRun = open('./static/data/fakeRunnerInSF.csv', 'r').readlines()
+    csvOfRun = open('./static/data/fakeRunnersInEv.csv', 'r').readlines()
     app.debug = True
     app.run()
