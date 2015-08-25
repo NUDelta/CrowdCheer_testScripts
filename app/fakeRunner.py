@@ -56,7 +56,7 @@ def fakeNewRun(querySet, updateFrequency, length):
             break
         sleep(updateFrequency)
 
-def fakeNewRunFromCSV(csvLines, updateFrequency, length):
+def fakeNewRunFromCSV(csvLines, updateFrequency, length, username, pwd):
     '''
     use like this...
     fakeNewLocations(runnerLocations, 1, 40)
@@ -64,7 +64,7 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length):
     1 is going to send the next location every 1 second,
      and will do this for 40 seconds
     '''
-    u = User.login("delta5", "pwd")
+    u = User.login(username, pwd)
     updateNum = 0
     for line in csvLines[1:]:
         lat, lon, time, username, user_objid, dist, runT = line.strip().split(",")
