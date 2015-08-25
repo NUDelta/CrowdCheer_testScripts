@@ -23,12 +23,7 @@ def fakeRun():
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnersInEv.csv', 'r').readlines()
     thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 586))
-    return "<h1>Select runner to simulate:</h1>
-	    <select>
-		<option value="Caitlin">Caitlin</option>
-		<option value="Frank">Frank</option>
-		<option value="Lisa">Lisa</option>
-	    </select>"
+    return "<h1>Select runner to simulate:</h1> <br> <select> <option value="Caitlin">Caitlin</option><option value="Frank">Frank</option><option value="Lisa">Lisa</option></select>"
 
 if __name__ == "__main__":
     ''' This is where stuff goes that will need to run when the server is started
