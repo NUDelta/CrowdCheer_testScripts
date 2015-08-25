@@ -29,7 +29,7 @@ def fakeRun():
 def caitlinRun():
     global csvOfRun
     if csvOfRun == None:
-        csvOfRun = open('./static/data/fakeRunnersInEv.csv', 'r').readlines()
+        csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
     thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 586, "cgjohnson4", "pwd"))
     return "<h1> Caitlin is running! </h1>"
 
@@ -37,7 +37,7 @@ def caitlinRun():
 def frankRun():
     global csvOfRun
     if csvOfRun == None:
-        csvOfRun = open('./static/data/fakeRunnersInEv.csv', 'r').readlines()
+        csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
     thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 586, "frank", "pwd"))
     return "<h1> Frank is running! </h1>"
 
@@ -45,7 +45,7 @@ def frankRun():
 def lisaRun():
     global csvOfRun
     if csvOfRun == None:
-        csvOfRun = open('./static/data/fakeRunnersInEv.csv', 'r').readlines()
+        csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
     thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 586, "LisaAMarz", "pwd"))
     return "<h1> Lisa is running! </h1>"
 
