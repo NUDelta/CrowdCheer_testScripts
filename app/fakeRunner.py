@@ -70,7 +70,7 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length):
         lat, lon, time, username, user_objid, dist, runT = line.strip().split(",")
         rl = RunnerLocation(location=GeoPoint(latitude=float(lat), longitude=float(lon)),
                             time = datetime.datetime.now(),
-                            user = user_objid,
+                            user = u,
                             distance = float(dist),
                             runTime = int(runT))
         rl.save()
