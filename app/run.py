@@ -26,7 +26,7 @@ def fakeRun():
     return "<h1> Delta 5 is running! </h1>"
 
 @app.route('/caitlin/')
-def fakeRun():
+def caitlinRun():
     global csvOfRun
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnersInEv.csv', 'r').readlines()
@@ -34,7 +34,7 @@ def fakeRun():
     return "<h1> Caitlin is running! </h1>"
 
 @app.route('/frank/')
-def fakeRun():
+def frankRun():
     global csvOfRun
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnersInEv.csv', 'r').readlines()
@@ -42,7 +42,7 @@ def fakeRun():
     return "<h1> Frank is running! </h1>"
 
 @app.route('/lisa/')
-def fakeRun():
+def lisaRun():
     global csvOfRun
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnersInEv.csv', 'r').readlines()
