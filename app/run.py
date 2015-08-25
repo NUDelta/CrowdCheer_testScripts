@@ -22,7 +22,7 @@ def fakeRun():
     global csvOfRun
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
-    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 586, delta5, pwd))
+    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 586, "delta5", "pwd"))
     return "<h1> Delta 5 is running! </h1>"
 if __name__ == "__main__":
     ''' This is where stuff goes that will need to run when the server is started
