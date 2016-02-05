@@ -34,6 +34,27 @@ class RunnerLocations(Object):
         self.duration = duration
         self.save()
 
+#CurrRunnerLocation class
+class CurrRunnerLocation(Object):
+    pass
+    def nowVersion(self):
+        crl = CurrRunnerLocation()
+        crl.location = self.location
+        crl.time = datetime.datetime.now()
+        crl.user = self.user
+        crl.distance = self.distance
+        crl.duration = self.duration
+        crl.save()
+
+    def new(self, lat, lon, distance, duration):
+        self.location = GeoPoint(latitude=lat, longitude=lon)
+        self.time = datetime.datetime.now()
+        global u
+        self.user = u
+        self.distance = distance
+        self.duration = duration
+        self.save()
+
 def getRunnerQuerySet():
     runnersQuerySet = RunnerLocations.Query.all().order_by("-distance")
     return runnersQuerySet
