@@ -60,7 +60,7 @@ def getRunnerQuerySet():
     return runnersQuerySet
 
 def getRunnerUpdateQuerySet():
-    runnerUpdateQuerySet = CurrRunnerLocation.Query.filter(user__gte=self.user)
+    runnerUpdateQuerySet = CurrRunnerLocation.Query.all().select_related(self.user, "user")
     return runnersQuerySet
 
 def fakeNewRun(querySet, updateFrequency, length):
