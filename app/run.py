@@ -20,7 +20,8 @@ def index():
 @app.route('/fakerun/')
 def fakeRun():
     global csvOfRun
-    global runnerUpdateQuery = fr.getRunnerUpdateQuerySet
+    global runnerUpdateQuery
+    runnerUpdateQuery = fr.getRunnerUpdateQuerySet()
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
     thread.start_new_thread(fr.fakeNewRunFromCSV, (runnerUpdateQuery, csvOfRun, 1, 196, "delta5", "pwd"))
