@@ -13,29 +13,29 @@ import random
 from settings_local import *
 register(APPLICATION_ID, REST_API_KEY, master_key=MASTER_KEY)
 
-#RunnerLocation class
-class RunnerLocation(Object):
+#RunnerLocations class
+class RunnerLocations(Object):
     pass
     def nowVersion(self):
-        rl = RunnerLocation()
+        rl = RunnerLocations()
         rl.location = self.location
         rl.time = datetime.datetime.now()
         rl.user = self.user
         rl.distance = self.distance
-        rl.runTime = self.runTime
+        rl.duration = self.duration
         rl.save()
 
-    def new(self, lat, lon, distance, runTime):
+    def new(self, lat, lon, distance, duration):
         self.location = GeoPoint(latitude=lat, longitude=lon)
         self.time = datetime.datetime.now()
         global u
         self.user = u
         self.distance = distance
-        self.runTime = runTime
+        self.duration = duration
         self.save()
 
 def getRunnerQuerySet():
-    runnersQuerySet = RunnerLocation.Query.all().order_by("-distance")
+    runnersQuerySet = RunnerLocations.Query.all().order_by("-distance")
     return runnersQuerySet
 
 def fakeNewRun(querySet, updateFrequency, length):
@@ -48,9 +48,9 @@ def fakeNewRun(querySet, updateFrequency, length):
      '''
     updateNum = 0
     for rl in querySet:
-        RunnerLocation.nowVersion(rl)
+        RunnerLocations.nowVersion(rl)
         print "updated %s times" % updateNum
-        print "distance : %s , runTime : %s" % (rl.distance, rl.runTime)
+        print "distance : %s , duration : %s" % (rl.distance, rl.duration)
         updateNum += 1
         if (updateNum > length):
             break
@@ -68,14 +68,14 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, username, pwd):
     updateNum = 0
     for line in csvLines[1:]:
         lat, lon, time, username, user_objid, dist, runT = line.strip().split(",")
-        rl = RunnerLocation(location=GeoPoint(latitude=float(lat), longitude=float(lon)),
+        rl = RunnerLocations(location=GeoPoint(latitude=float(lat), longitude=float(lon)),
                             time = datetime.datetime.now(),
                             user = u,
                             distance = float(dist),
-                            runTime = int(runT))
+                            duration = int(runT))
         rl.save()
         print "updated %s times" % updateNum
-        print "distance : %s , runTime : %s" % (rl.distance, rl.runTime)
+        print "distance : %s , duration : %s" % (rl.distance, rl.duration)
         updateNum += 1
         if (updateNum > length):
             break

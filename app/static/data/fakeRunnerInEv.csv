@@ -1,4 +1,4 @@
-lat,lon,time,username,user_objId,distance,runTime
+lat,lon,time,username,user_objId,distance,duration
 42.05270785,-87.67706634,2015-08-19T18:02:20.811Z,Delta 6,o3hqpXNKDJ,5.630949,1
 42.05270785,-87.67706634,2015-08-19T18:02:21.810Z,Delta 6,o3hqpXNKDJ,5.630949,2
 42.05270785,-87.67706634,2015-08-19T18:02:22.811Z,Delta 6,o3hqpXNKDJ,5.630949,3
