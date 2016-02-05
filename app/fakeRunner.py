@@ -114,12 +114,12 @@ def fakeNewRunFromCSV(querySet, csvLines, updateFrequency, length, username, pwd
                             duration = int(runT))
         rl.save()
         
-        crl = CurrRunnerLocation(location=GeoPoint(latitude=float(lat), longitude=float(lon)),
-                        time = datetime.datetime.now(),
-                        user = u,
-                        distance = float(dist),
-                        duration = int(runT))
-        crl.save()
+        # crl = CurrRunnerLocation(location=GeoPoint(latitude=float(lat), longitude=float(lon)),
+        #                 time = datetime.datetime.now(),
+        #                 user = u,
+        #                 distance = float(dist),
+        #                 duration = int(runT))
+        # crl.save()
         print "updated %s times" % updateNum
         print "distance : %s , duration : %s" % (rl.distance, rl.duration)
         updateNum += 1
