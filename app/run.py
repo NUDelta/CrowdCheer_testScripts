@@ -29,7 +29,8 @@ def fakeRun():
 @app.route('/caitlin/')
 def caitlinRun():
     global csvOfRun
-    global runnerUpdateQuery = fr.getRunnerUpdateQuerySet
+    global runnerUpdateQuery
+    runnerUpdateQuery = fr.getRunnerUpdateQuerySet()
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
     thread.start_new_thread(fr.fakeNewRunFromCSV, (runnerUpdateQuery, csvOfRun, 1, 196, "cgjohnson4", "pwd"))
@@ -38,7 +39,8 @@ def caitlinRun():
 @app.route('/frank/')
 def frankRun():
     global csvOfRun
-    global runnerUpdateQuery = fr.getRunnerUpdateQuerySet
+    global runnerUpdateQuery
+    runnerUpdateQuery = fr.getRunnerUpdateQuerySet()
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
     thread.start_new_thread(fr.fakeNewRunFromCSV, (runnerUpdateQuery, csvOfRun, 1, 196, "frank", "pwd"))
@@ -47,7 +49,8 @@ def frankRun():
 @app.route('/lisa/')
 def lisaRun():
     global csvOfRun
-    global runnerUpdateQuery = fr.getRunnerUpdateQuerySet
+    global runnerUpdateQuery
+    runnerUpdateQuery = fr.getRunnerUpdateQuerySet()
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
     thread.start_new_thread(fr.fakeNewRunFromCSV, (runnerUpdateQuery, csvOfRun, 1, 196, "LisaAMarz", "pwd"))
@@ -57,7 +60,8 @@ if __name__ == "__main__":
     ''' This is where stuff goes that will need to run when the server is started
     '''
     global csvOfRun
-    global runnerUpdateQuery = fr.getRunnerUpdateQuerySet
+    global runnerUpdateQuery
+    runnerUpdateQuery = fr.getRunnerUpdateQuerySet()
     csvOfRun = open('./static/data/fakeRunnersInEv.csv', 'r').readlines()
     app.debug = True
     app.run()
