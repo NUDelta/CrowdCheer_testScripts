@@ -142,6 +142,9 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
         objectPath = '/1/classes/CurrRunnerLocation/' + objID
         connection.connect()
         connection.request('PUT', objectPath, json.dumps({
+            
+            "duration": int(runT),
+            "distance": float(dist),
             "location": {
                 "__type": "GeoPoint",
                 "latitude": float(lat), 
