@@ -10,8 +10,30 @@ batcher = ParseBatcher()
 import datetime
 from time import sleep
 import random
+import json, httplib
 from settings_local import *
 register(APPLICATION_ID, REST_API_KEY, master_key=MASTER_KEY)
+
+#CurrRunnerLocation class
+class CurrRunnerLocation(Object):
+    pass
+    def nowVersion(self):
+        crl = CurrRunnerLocation()
+        crl.location = self.location
+        crl.time = datetime.datetime.now()
+        crl.user = self.user
+        crl.distance = self.distance
+        crl.duration = self.duration
+        crl.save()
+
+    def new(self, lat, lon, distance, duration):
+        self.location = GeoPoint(latitude=lat, longitude=lon)
+        self.time = datetime.datetime.now()
+        global u
+        self.user = u
+        self.distance = distance
+        self.duration = duration
+        self.save()
 
 #RunnerLocations class
 class RunnerLocations(Object):
@@ -59,6 +81,23 @@ def getRunnerQuerySet():
     runnersQuerySet = RunnerLocations.Query.all().order_by("-distance")
     return runnersQuerySet
 
+def getRunnerUpdateQuerySet():
+    connection = httplib.HTTPSConnection('api.parse.com', 443)
+    params = urllib.urlencode({"where":json.dumps({
+       "user": self.user, 
+       "limit":1
+     })})
+    connection.connect()
+    connection.request('GET', '/1/classes/CurrRunnerLocation?%s' % params, '', {
+       "X-Parse-Application-Id": "QXRTROGsVaRn4a3kw4gaFnHGNOsZxXoZ8ULxwZmf",
+       "X-Parse-REST-API-Key": "BCJuFgG7GVxZfnc2mVbt2dzLz4bP7qAu16xaItXB"
+     })
+    runnerUpdateQuerySet = json.loads(connection.getresponse().read())
+    # runnerUpdateQuerySet = CurrRunnerLocation.Query.all().select_related(self.user, "user")
+    print(runnersQuerySet)
+    return runnersQuerySet
+
+
 def fakeNewRun(querySet, updateFrequency, length):
     '''
     use like this...
@@ -77,7 +116,7 @@ def fakeNewRun(querySet, updateFrequency, length):
             break
         sleep(updateFrequency)
 
-def fakeNewRunFromCSV(csvLines, updateFrequency, length, username, pwd):
+def fakeNewRunFromCSV(querySet, csvLines, updateFrequency, length, username, pwd):
     '''
     use like this...
     fakeNewLocations(runnerLocations, 1, 40)
@@ -95,6 +134,13 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, username, pwd):
                             distance = float(dist),
                             duration = int(runT))
         rl.save()
+        
+        # crl = CurrRunnerLocation(location=GeoPoint(latitude=float(lat), longitude=float(lon)),
+        #                 time = datetime.datetime.now(),
+        #                 user = u,
+        #                 distance = float(dist),
+        #                 duration = int(runT))
+        # crl.save()
         print "updated %s times" % updateNum
         print "distance : %s , duration : %s" % (rl.distance, rl.duration)
         updateNum += 1
