@@ -46,15 +46,17 @@ class CurrRunnerLocation(Object):
         crl.user = self.user
         crl.distance = self.distance
         crl.duration = self.duration
+        crl.updateObjID = self.updateObjID
         crl.save()
 
-    def new(self, lat, lon, distance, duration):
+    def new(updateObjID, self, lat, lon, distance, duration):
         self.location = GeoPoint(latitude=lat, longitude=lon)
         self.time = datetime.datetime.now()
         global u
         self.user = u
         self.distance = distance
         self.duration = duration
+        self.updateObjID = updateObjID
         self.save()
 
 def getRunnerQuerySet():
@@ -80,7 +82,7 @@ def fakeNewRun(querySet, updateFrequency, length):
             break
         sleep(updateFrequency)
 
-def fakeNewRunFromCSV(csvLines, updateFrequency, length, username, pwd):
+def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
     '''
     use like this...
     fakeNewLocations(runnerLocations, 1, 40)
@@ -99,7 +101,8 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, username, pwd):
                             duration = int(runT))
         rl.save()
         
-        crl = CurrRunnerLocation(location=GeoPoint(latitude=float(lat), longitude=float(lon)),
+        crl = CurrRunnerLocation(updateObjID = objID,
+                        location=GeoPoint(latitude=float(lat), longitude=float(lon)),
                         time = datetime.datetime.now(),
                         user = u,
                         distance = float(dist),
