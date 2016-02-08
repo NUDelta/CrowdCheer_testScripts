@@ -46,7 +46,7 @@ class CurrRunnerLocation(Object):
         crl.user = self.user
         crl.distance = self.distance
         crl.duration = self.duration
-        crl.objectID = self.objectID
+        crl.objectId = self.objectId
         crl.save()
 
     def new(updateObjID, self, lat, lon, distance, duration):
@@ -56,7 +56,7 @@ class CurrRunnerLocation(Object):
         self.user = u
         self.distance = distance
         self.duration = duration
-        self.objectID = objectID
+        self.objectId = objectId
         self.save()
 
 def getRunnerQuerySet():
@@ -101,7 +101,7 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
                             duration = int(runT))
         rl.save()
         
-        crl = CurrRunnerLocation(objectID = objID,
+        crl = CurrRunnerLocation(objectId = objID,
                         location=GeoPoint(latitude=float(lat), longitude=float(lon)),
                         time = datetime.datetime.now(),
                         user = u,
