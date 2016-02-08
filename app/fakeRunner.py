@@ -142,7 +142,11 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
         objectPath = '/1/classes/CurrRunnerLocation/' + objID
         connection.connect()
         connection.request('PUT', objectPath, json.dumps({
-            "location": GeoPoint(latitude=float(lat), longitude=float(lon))
+            "location": {
+                "__type": "GeoPoint",
+                "latitude": float(lat), 
+                "longitude": float(lon)
+            }
         }), {
             "X-Parse-Application-Id": "QXRTROGsVaRn4a3kw4gaFnHGNOsZxXoZ8ULxwZmf",
             "X-Parse-REST-API-Key": "BCJuFgG7GVxZfnc2mVbt2dzLz4bP7qAu16xaItXB",
@@ -150,7 +154,7 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
         })
         result = json.loads(connection.getresponse().read())
         print result
-        
+
         print "updated %s times" % updateNum
         print "distance : %s , duration : %s" % (rl.distance, rl.duration)
         updateNum += 1

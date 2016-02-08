@@ -39,7 +39,7 @@ def frankRun():
     global csvOfRun
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
-    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "gFmEE3Lzvo", "frank", "pwd"))
+    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "mxSnffthSJ", "frank", "pwd"))
     return "<h1> Frank is running! </h1>"
 
 @app.route('/lisa/')
