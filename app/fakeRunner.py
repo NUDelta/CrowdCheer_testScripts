@@ -1,5 +1,5 @@
 '''
-Script for faking runners from Scott
+Script for faking runners for CrowdCheer
 '''
 
 # register with parse
@@ -36,29 +36,6 @@ class RunnerLocations(Object):
         self.duration = duration
         self.save()
 
-#CurrRunnerLocation class
-# class CurrRunnerLocation(Object):
-#     pass
-#     def nowVersion(self):
-#         crl = CurrRunnerLocation()
-#         crl.location = self.location
-#         crl.time = datetime.datetime.now()
-#         crl.user = self.user
-#         crl.distance = self.distance
-#         crl.duration = self.duration
-#         crl.objectId = self.objectId
-#         crl.save()
-
-#     def new(updateObjID, self, lat, lon, distance, duration):
-#         self.location = GeoPoint(latitude=lat, longitude=lon)
-#         self.time = datetime.datetime.now()
-#         global u
-#         self.user = u
-#         self.distance = distance
-#         self.duration = duration
-#         self.objectId = objectId
-#         self.save()
-
 def getRunnerQuerySet():
     runnersQuerySet = RunnerLocations.Query.all().order_by("-distance")
     return runnersQuerySet
@@ -81,43 +58,6 @@ def fakeNewRun(querySet, updateFrequency, length):
         if (updateNum > length):
             break
         sleep(updateFrequency)
-
-# def fakeCurrLocFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
-#     '''
-#     use like this...
-#     fakeNewLocations(runnerLocations, 1, 40)
-#     runnerLocations is the query,
-#     1 is going to send the next location every 1 second,
-#      and will do this for 40 seconds
-#     '''
-#     u = User.login(username, pwd)
-#     updateNum = 0
-#     for line in csvLines[1:]:
-#         lat, lon, time, username, user_objid, dist, runT = line.strip().split(",")
-#         rl = RunnerLocations(location=GeoPoint(latitude=float(lat), longitude=float(lon)),
-#                             time = datetime.datetime.now(),
-#                             user = u,
-#                             distance = float(dist),
-#                             duration = int(runT))
-#         rl.save()
-        
-#         connection = httplib.HTTPSConnection('api.parse.com', 443)
-#         objectPath = '/1/classes/CurrRunnerLocation/' + objID
-#         connection.connect()
-#         connection.request('PUT', objectPath, json.dumps({
-#             "location": GeoPoint(latitude=float(lat), longitude=float(lon))
-#         }), {
-#             "X-Parse-Application-Id": "QXRTROGsVaRn4a3kw4gaFnHGNOsZxXoZ8ULxwZmf",
-#             "X-Parse-REST-API-Key": "BCJuFgG7GVxZfnc2mVbt2dzLz4bP7qAu16xaItXB",
-#             "Content-Type": "application/json"
-#         })
-#         result = json.loads(connection.getresponse().read())
-#         print result
-
-#         updateNum += 1
-#         if (updateNum > length):
-#             break
-#         sleep(updateFrequency)
 
 def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
     '''
