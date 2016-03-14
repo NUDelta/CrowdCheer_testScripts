@@ -23,7 +23,7 @@ def fakeRun():
     global csvOfRun
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
-    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "NQj4hjO2qY", "delta", "pwd"))
+    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "1wiATmCxxI", "delta", "pwd"))
     return "<h1> Stella is running! </h1>"
 
 @app.route('/caitlin/')
