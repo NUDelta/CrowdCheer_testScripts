@@ -75,7 +75,7 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
                             time = datetime.datetime.now(),
                             user = u,
                             distance = float(dist),
-                            duration = int(runT))
+                            duration = runT)
         rl.save()
         
         connection = httplib.HTTPSConnection('api.parse.com', 443)
@@ -83,7 +83,7 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
         connection.connect()
         connection.request('PUT', objectPath, json.dumps({
             
-            "duration": int(runT),
+            "duration": runT,
             "distance": float(dist),
             "location": {
                 "__type": "GeoPoint",
