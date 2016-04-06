@@ -142,7 +142,7 @@ def fakeNewCheerFromCSV(csvLines, updateFrequency, length, objID, username, pwd)
                             user = u,
                             distance = float(dist),
                             duration = runT)
-        rl.save()
+        sl.save()
         
         connection = httplib.HTTPSConnection('api.parse.com', 443)
         objectPath = '/1/classes/CurrSpectatorLocation/' + objID
@@ -165,7 +165,7 @@ def fakeNewCheerFromCSV(csvLines, updateFrequency, length, objID, username, pwd)
         print result
 
         print "updated %s times" % updateNum
-        print "distance : %s , duration : %s" % (rl.distance, rl.duration)
+        print "distance : %s , duration : %s" % (sl.distance, sl.duration)
         updateNum += 1
         if (updateNum > length):
             break
