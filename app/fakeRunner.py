@@ -105,6 +105,52 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
             break
         sleep(updateFrequency)
 
+def fakeNewCheerFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
+    '''
+    use like this...
+    fakeNewLocations(runnerLocations, 1, 40)
+    runnerLocations is the query,
+    1 is going to send the next location every 1 second,
+     and will do this for 40 seconds
+    '''
+    u = User.login(username, pwd)
+    updateNum = 0
+    for line in csvLines[1:]:
+        lat, lon, time, username, user_objid, dist, runT = line.strip().split(",")
+        sl = SpectatorLocations(location=GeoPoint(latitude=float(lat), longitude=float(lon)),
+                            time = datetime.datetime.now(),
+                            user = u,
+                            distance = float(dist),
+                            duration = runT)
+        rl.save()
+        
+        connection = httplib.HTTPSConnection('api.parse.com', 443)
+        objectPath = '/1/classes/CurrSpectatorLocation/' + objID
+        connection.connect()
+        connection.request('PUT', objectPath, json.dumps({
+            
+            "duration": runT,
+            "distance": float(dist),
+            "location": {
+                "__type": "GeoPoint",
+                "latitude": float(lat), 
+                "longitude": float(lon)
+            }
+        }), {
+            "X-Parse-Application-Id": "QXRTROGsVaRn4a3kw4gaFnHGNOsZxXoZ8ULxwZmf",
+            "X-Parse-REST-API-Key": "BCJuFgG7GVxZfnc2mVbt2dzLz4bP7qAu16xaItXB",
+            "Content-Type": "application/json"
+        })
+        result = json.loads(connection.getresponse().read())
+        print result
+
+        print "updated %s times" % updateNum
+        print "distance : %s , duration : %s" % (rl.distance, rl.duration)
+        updateNum += 1
+        if (updateNum > length):
+            break
+        sleep(updateFrequency)
+
 def fakeOneLocation(exampleLoc, lat, lon):
     '''
     use like this...

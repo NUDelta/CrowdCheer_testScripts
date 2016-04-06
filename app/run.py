@@ -39,7 +39,7 @@ def frankRun():
     global csvOfRun
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
-    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "mxSnffthSJ", "frank", "pwd"))
+    thread.start_new_thread(fr.fakeNewCheerFromCSV, (csvOfRun, 1, 196, "mRVxiECKyh", "frank", "pwd"))
     return "<h1> Frank is running! </h1>"
 
 @app.route('/lisa/')
@@ -47,7 +47,7 @@ def lisaRun():
     global csvOfRun
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
-    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "wGofhMpFB9", "LisaAMarz", "pwd"))
+    thread.start_new_thread(fr.fakeNewCheerFromCSV, (csvOfRun, 1, 196, "3f0fMYzzEa", "LisaAMarz", "pwd"))
     return "<h1> Lisa is running! </h1>"
 
 if __name__ == "__main__":
