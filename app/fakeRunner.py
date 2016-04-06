@@ -36,6 +36,26 @@ class RunnerLocations(Object):
         self.duration = duration
         self.save()
 
+class SpectatorLocations(Object):
+    pass
+    def nowVersion(self):
+        sl = SpectatorLocations()
+        sl.location = self.location
+        sl.time = datetime.datetime.now()
+        sl.user = self.user
+        sl.distance = self.distance
+        sl.duration = self.duration
+        sl.save()
+
+    def new(self, lat, lon, distance, duration):
+        self.location = GeoPoint(latitude=lat, longitude=lon)
+        self.time = datetime.datetime.now()
+        global u
+        self.user = u
+        self.distance = distance
+        self.duration = duration
+        self.save()
+
 def getRunnerQuerySet():
     runnersQuerySet = RunnerLocations.Query.all().order_by("-distance")
     return runnersQuerySet
