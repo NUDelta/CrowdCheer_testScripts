@@ -19,7 +19,7 @@ def index():
 
 
 @app.route('/stella/')
-def fakeRun():
+def stellaRun():
     global csvOfRun
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
@@ -27,7 +27,7 @@ def fakeRun():
     return "<h1> Stella is running! </h1>"
 
 @app.route('/stella_short/')
-def fakeRun():
+def stellaShortRun():
     global csvOfRun
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnerInEv_short.csv', 'r').readlines()
