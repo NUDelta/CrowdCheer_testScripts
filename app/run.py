@@ -46,9 +46,9 @@ def caitlinRun():
 def moliriCheer():
     global csvOfRun
     if csvOfRun == None:
-        csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
-    thread.start_new_thread(fr.fakeNewCheerFromCSV, (csvOfRun, 1, 196, "VBncWURIbx", "moliri", "pwd"))
-    return "<h1> Stella is running! </h1>"
+        csvOfRun = open('./static/data/fakeSpectatorInEv.csv', 'r').readlines()
+    thread.start_new_thread(fr.fakeNewCheerFromCSV, (csvOfRun, 1, 261, "VBncWURIbx", "moliri", "pwd"))
+    return "<h1> Moliri is cheering! </h1>"
 
 if __name__ == "__main__":
     ''' This is where stuff goes that will need to run when the server is started
