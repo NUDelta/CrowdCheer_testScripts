@@ -42,7 +42,15 @@ def caitlinRun():
     thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "1rCXAhnCcN", "cgjohnson4", "pwd"))
     return "<h1> Caitlin is running! </h1>"
 
-@app.route('/moliri/')
+@app.route('/moliriRun/')
+def moliriRun():
+    global csvOfRun
+    if csvOfRun == None:
+        csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
+    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "8hNTsRiLzK", "moliri", "pwd"))
+    return "<h1> Moliri is running! </h1>"
+
+@app.route('/moliriCheer/')
 def moliriCheer():
     global csvOfRun
     if csvOfRun == None:
