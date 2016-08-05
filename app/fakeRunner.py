@@ -25,15 +25,17 @@ class RunnerLocations(Object):
         rl.user = self.user
         rl.distance = self.distance
         rl.duration = self.duration
+        rl.speed = self.speed
         rl.save()
 
-    def new(self, lat, lon, distance, duration):
+    def new(self, lat, lon, distance, duration, speed):
         self.location = GeoPoint(latitude=lat, longitude=lon)
         self.time = datetime.datetime.now()
         global u
         self.user = u
         self.distance = distance
         self.duration = duration
+        self.speed = speed
         self.save()
 
 class SpectatorLocations(Object):
@@ -90,12 +92,13 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
     u = User.login(username, pwd)
     updateNum = 0
     for line in csvLines[1:]:
-        lat, lon, time, username, user_objid, dist, runT = line.strip().split(",")
+        lat, lon, time, username, user_objid, dist, runT, speed = line.strip().split(",")
         rl = RunnerLocations(location=GeoPoint(latitude=float(lat), longitude=float(lon)),
                             time = datetime.datetime.now(),
                             user = u,
                             distance = float(dist),
-                            duration = runT)
+                            duration = runT, 
+                            speed = float(speed))
         rl.save()
         
         connection = httplib.HTTPSConnection('api.parse.com', 443)
@@ -103,6 +106,7 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
         connection.connect()
         connection.request('PUT', objectPath, json.dumps({
             
+            "speed": float(speed),
             "duration": runT,
             "distance": float(dist),
             "location": {
