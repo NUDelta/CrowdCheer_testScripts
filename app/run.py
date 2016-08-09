@@ -23,7 +23,7 @@ def stellaRun():
     global csvOfRun
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
-    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "ZavG77xAc7", "delta", "pwd"))
+    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "gVfCoJiaCJ", "delta", "pwd"))
     return "<h1> Stella is running! </h1>"
 
 @app.route('/stella_short/')
@@ -31,7 +31,7 @@ def stellaShortRun():
     global csvOfRun
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnerInEv_short.csv', 'r').readlines()
-    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 112, "ZavG77xAc7", "delta", "pwd"))
+    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 112, "gVfCoJiaCJ", "delta", "pwd"))
     return "<h1> Stella is running! </h1>"
 
 @app.route('/caitlin/')
