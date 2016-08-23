@@ -106,7 +106,7 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
         connection.connect()
         connection.request('PUT', objectPath, json.dumps({
             
-            "time": datetime.datetime.now(),
+            "time": time,
             "speed": float(speed),
             "duration": runT,
             "distance": float(dist),
