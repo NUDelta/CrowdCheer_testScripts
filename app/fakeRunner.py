@@ -111,7 +111,7 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
             
             "time": {
                 "__type": "Date",
-                "iso": isotime
+                "iso": datetime.utcnow().isoformat()
             },
             "speed": float(speed),
             "duration": runT,
