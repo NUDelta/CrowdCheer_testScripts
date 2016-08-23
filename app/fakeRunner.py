@@ -101,6 +101,9 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
                             speed = float(speed))
         rl.save()
 
+        isotime = datetime.utcnow().isoformat()
+        print isotime
+
         connection = httplib.HTTPSConnection('api.parse.com', 443)
         objectPath = '/1/classes/CurrRunnerLocation/' + objID
         connection.connect()
@@ -108,7 +111,7 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
             
             "time": {
                 "__type": "Date",
-                "iso": datetime.datetime.now()
+                "iso": isotime
             },
             "speed": float(speed),
             "duration": runT,
