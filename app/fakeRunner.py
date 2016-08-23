@@ -100,16 +100,16 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
                             duration = runT, 
                             speed = float(speed))
         rl.save()
-        
-        print datetime.datetime.now()
-        print rl.time
 
         connection = httplib.HTTPSConnection('api.parse.com', 443)
         objectPath = '/1/classes/CurrRunnerLocation/' + objID
         connection.connect()
         connection.request('PUT', objectPath, json.dumps({
             
-            "time": rl.time,
+            "time": {
+                "__type": "Date",
+                "iso": datetime.datetime.now()
+            },
             "speed": float(speed),
             "duration": runT,
             "distance": float(dist),
