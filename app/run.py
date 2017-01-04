@@ -4,6 +4,8 @@ import json, httplib
 from flask import Flask,redirect, render_template, json, jsonify, request
 import thread
 app = Flask(__name__)
+os.environ["PARSE_API_ROOT"] = "https://crowdcheerdb.herokuapp.com/parse"
+
 #load the file, make it global
 csvOfRun = None
 @app.route('/commonality/')

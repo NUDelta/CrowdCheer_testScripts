@@ -3,9 +3,6 @@ Script for faking runners for CrowdCheer
 '''
 
 # register with parse
-import os
-os.environ["PARSE_API_ROOT"] = "https://crowdcheerdb.herokuapp.com/parse"
-
 from parse_rest.connection import register, ParseBatcher
 from parse_rest.user import User
 from parse_rest.datatypes import Object, GeoPoint
