@@ -119,8 +119,8 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
                 "longitude": float(lon)
             }
         }), {
-            "X-Parse-Application-Id": "QXRTROGsVaRn4a3kw4gaFnHGNOsZxXoZ8ULxwZmf",
-            "X-Parse-REST-API-Key": "BCJuFgG7GVxZfnc2mVbt2dzLz4bP7qAu16xaItXB",
+            "X-Parse-Application-Id": APPLICATION_ID,
+            "X-Parse-REST-API-Key": REST_API_KEY,
             "Content-Type": "application/json"
         })
         result = json.loads(connection.getresponse().read())
