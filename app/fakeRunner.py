@@ -101,7 +101,7 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
                             speed = float(speed))
         rl.save()
 
-        connection = httplib.HTTPSConnection('https://crowdcheerdb.herokuapp.com/parse', 443)
+        connection = httplib.HTTPSConnection('crowdcheerdb.herokuapp.com/parse', 443)
         objectPath = '/classes/CurrRunnerLocation/' + objID
         connection.connect()
         connection.request('PUT', objectPath, json.dumps({
@@ -152,7 +152,7 @@ def fakeNewCheerFromCSV(csvLines, updateFrequency, length, objID, username, pwd)
                             duration = runT)
         sl.save()
         
-        connection = httplib.HTTPSConnection('https://crowdcheerdb.herokuapp.com/parse', 443)
+        connection = httplib.HTTPSConnection('crowdcheerdb.herokuapp.com/parse', 443)
         objectPath = '/1/classes/CurrSpectatorLocation/' + objID
         connection.connect()
         connection.request('PUT', objectPath, json.dumps({
@@ -267,7 +267,7 @@ def zodiac_from_bday(birth_month, birth_day):
 
 def getAllUsers():
     import json,httplib
-    connection = httplib.HTTPSConnection('https://crowdcheerdb.herokuapp.com/parse', 443)
+    connection = httplib.HTTPSConnection('crowdcheerdb.herokuapp.com/parse', 443)
     connection.connect()
     connection.request('GET', '/1/users', '', {
            "X-Parse-Application-Id": APPLICATION_ID,
