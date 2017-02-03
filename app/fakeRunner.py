@@ -101,8 +101,8 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
                             speed = float(speed))
         rl.save()
 
-        connection = httplib.HTTPSConnection('https://crowdcheerdb.herokuapp.com/parse', 443)
-        objectPath = '/1/classes/CurrRunnerLocation/' + objID
+        connection = httplib.HTTPSConnection('https://crowdcheerdb.herokuapp.com/parse/', 443)
+        objectPath = '/classes/CurrRunnerLocation/' + objID
         connection.connect()
         connection.request('PUT', objectPath, json.dumps({
             
