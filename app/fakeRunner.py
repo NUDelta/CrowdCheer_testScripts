@@ -13,6 +13,7 @@ import random
 import json, httplib
 from settings_local import *
 register(APPLICATION_ID, REST_API_KEY, master_key=MASTER_KEY)
+API_ROOT = os.environ.get('PARSE_API_ROOT')
 
 
 #RunnerLocations class
@@ -103,6 +104,7 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
 
         connection = httplib.HTTPSConnection('crowdcheerdb.herokuapp.com/parse/', 443)
         objectPath = 'classes/CurrRunnerLocation/' + objID
+        print API_ROOT
         connection.connect()
         connection.request('PUT', objectPath, json.dumps({
             
