@@ -10,7 +10,7 @@ batcher = ParseBatcher()
 import datetime
 from time import sleep
 import random
-import json, httplib
+import json, httplib, os
 from settings_local import *
 register(APPLICATION_ID, REST_API_KEY, master_key=MASTER_KEY)
 API_ROOT = os.environ.get('PARSE_API_ROOT')
