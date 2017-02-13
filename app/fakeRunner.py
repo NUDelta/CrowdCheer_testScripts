@@ -146,26 +146,19 @@ def fakeNewCheerFromCSV(csvLines, updateFrequency, length, objID, username, pwd)
                             duration = runT)
         sl.save()
         
-        connection = httplib.HTTPSConnection('crowdcheerdb.herokuapp.com/parse/', 443)
-        objectPath = 'classes/CurrSpectatorLocation/' + objID
-        connection.connect()
-        connection.request('PUT', objectPath, json.dumps({
-            
+        base_url = 'https://crowdcheerdb.herokuapp.com/parse/classes/CurrSpectatorLocation/' + objID
+        header = {'X-Parse-Application-Id': 'QXRTROGsVaRn4a3kw4gaFnHGNOsZxXoZ8ULxwZmf'}
+        data = {
             "duration": runT,
             "distance": float(dist),
             "location": {
                 "__type": "GeoPoint",
                 "latitude": float(lat), 
                 "longitude": float(lon)
-            }
-        }), {
-            "X-Parse-Application-Id": APPLICATION_ID,
-            "X-Parse-REST-API-Key": REST_API_KEY,
-            "Content-Type": "application/json"
-        })
-        result = json.loads(connection.getresponse().read())
-        print result
-
+                }
+        }
+        resp = requests.put(base_url, headers=header, data=json.dumps(data))
+        print resp
         print "updated %s times" % updateNum
         print "distance : %s , duration : %s" % (sl.distance, sl.duration)
         updateNum += 1
