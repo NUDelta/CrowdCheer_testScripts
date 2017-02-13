@@ -10,7 +10,7 @@ batcher = ParseBatcher()
 import datetime
 from time import sleep
 import random
-import json, httplib, os
+import json, httplib, os, requests
 from settings_local import *
 register(APPLICATION_ID, REST_API_KEY, master_key=MASTER_KEY)
 API_ROOT = os.environ.get('PARSE_API_ROOT')
@@ -102,12 +102,9 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
                             speed = float(speed))
         rl.save()
 
-        connection = httplib.HTTPSConnection('crowdcheerdb.herokuapp.com/parse/', 443)
-        objectPath = 'classes/CurrRunnerLocation/' + objID
-        print API_ROOT
-        connection.connect()
-        connection.request('PUT', objectPath, json.dumps({
-            
+        base_url = 'https://crowdcheerdb.herokuapp.com/parse/classes/CurrRunnerLocation/' + objID
+        header = {'X-Parse-Application-Id': 'QXRTROGsVaRn4a3kw4gaFnHGNOsZxXoZ8ULxwZmf'}
+        data = {
             "time": {
                 "__type": "Date",
                 "iso": datetime.datetime.utcnow().isoformat()
@@ -120,14 +117,9 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
                 "latitude": float(lat), 
                 "longitude": float(lon)
             }
-        }), {
-            "X-Parse-Application-Id": APPLICATION_ID,
-            "X-Parse-REST-API-Key": REST_API_KEY,
-            "Content-Type": "application/json"
-        })
-        result = json.loads(connection.getresponse().read())
-        print result
-
+        }
+        resp = requests.put(base_url, headers=header, data=json.dumps(data))
+        print resp
         print "updated %s times" % updateNum
         print "distance : %s , duration : %s" % (rl.distance, rl.duration)
         updateNum += 1
