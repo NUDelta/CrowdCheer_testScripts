@@ -20,7 +20,7 @@ def index():
     return "<h1>working</h1>"
 
 
-@app.route('/stella/')
+@app.route('/stella/') #bib = 123
 def stellaRun():
     global csvOfRun
     if csvOfRun == None:
@@ -28,7 +28,7 @@ def stellaRun():
     thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "wl7DOoTpKR", "delta", "pwd"))
     return "<h1> Stella is running! </h1>"
 
-@app.route('/stella_short/')
+@app.route('/stella_short/') #bib = 123
 def stellaShortRun():
     global csvOfRun
     if csvOfRun == None:
@@ -36,13 +36,24 @@ def stellaShortRun():
     thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 112, "wl7DOoTpKR", "delta", "pwd"))
     return "<h1> Stella is running! </h1>"
 
-@app.route('/moliriRun/')
+
+@app.route('/caitlin/') #bib = 456
 def moliriRun():
     global csvOfRun
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
-    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "B50jwtYerd", "moliri", "pwd"))
+    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "JkdEbqbNpg", "cgjohnson4", "pwd"))
     return "<h1> Moliri is running! </h1>"
+
+
+@app.route('/moliriRun/') #bib = 789
+def moliriRun():
+    global csvOfRun
+    if csvOfRun == None:
+        csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
+    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "B50jwtYerd", "", "pwd"))
+    return "<h1> Moliri is running! </h1>"
+
 
 @app.route('/moliriCheer/')
 def moliriCheer():
