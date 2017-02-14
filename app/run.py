@@ -38,7 +38,7 @@ def stellaShortRun():
 
 
 @app.route('/caitlin/') #bib = 456
-def moliriRun():
+def caitlinRun():
     global csvOfRun
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
