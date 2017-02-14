@@ -105,10 +105,6 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
         base_url = 'https://crowdcheerdb.herokuapp.com/parse/classes/CurrRunnerLocation/' + objID
         header = {'X-Parse-Application-Id': 'QXRTROGsVaRn4a3kw4gaFnHGNOsZxXoZ8ULxwZmf'}
         data = {
-            "time": {
-                "__type": "Date",
-                "iso": datetime.datetime.utcnow().isoformat()
-            },
             "speed": float(speed),
             "duration": runT,
             "distance": float(dist),
@@ -116,12 +112,18 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
                 "__type": "GeoPoint",
                 "latitude": float(lat), 
                 "longitude": float(lon)
+            }, 
+            "time": {
+                "__type": "Date",
+                "iso": datetime.datetime.utcnow().isoformat()
             }
         }
         resp = requests.put(base_url, headers=header, data=json.dumps(data))
         print resp
         print "updated %s times" % updateNum
-        print "distance : %s , duration : %s" % (rl.distance, rl.duration)
+        print "lat : %s , lon : %s" % (rl.latitude, rl.longitude)
+        print "speed : %s , lon : %s" % (rl.latitude, rl.longitude)
+        print "speed : %s , distance : %s , duration : %s" % (rl.speed, rl.distance, rl.duration)
         updateNum += 1
         if (updateNum > length):
             break

@@ -43,7 +43,7 @@ def caitlinRun():
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
     thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "JkdEbqbNpg", "cgjohnson4", "pwd"))
-    return "<h1> Moliri is running! </h1>"
+    return "<h1> Caitlin is running! </h1>"
 
 
 @app.route('/moliriRun/') #bib = 789
