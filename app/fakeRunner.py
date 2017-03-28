@@ -121,7 +121,7 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
         resp = requests.put(base_url, headers=header, data=json.dumps(data))
         print resp.json()
         print "updated %s times" % updateNum
-        print "location : %s"  % (rl.location)
+        print "location : %s, lat : %s, lon : %s"  % (rl.location, lat, lon)
         print "speed : %s , distance : %s , duration : %s" % (rl.speed, rl.distance, rl.duration)
         updateNum += 1
         if (updateNum > length):
