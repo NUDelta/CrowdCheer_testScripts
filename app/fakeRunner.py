@@ -150,8 +150,8 @@ def fakeNewCheerFromCSV(csvLines, updateFrequency, length, objID, username, pwd)
         base_url = 'https://crowdcheerdb.herokuapp.com/parse/classes/CurrSpectatorLocation/' + objID
         header = {'X-Parse-Application-Id': 'QXRTROGsVaRn4a3kw4gaFnHGNOsZxXoZ8ULxwZmf'}
         data = {
-            "duration": runT,
-            "distance": float(dist),
+            "duration": sl.time,
+            "distance": sl.distance,
             "location": {
                 "__type": "GeoPoint",
                 "latitude": float(lat), 
