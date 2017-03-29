@@ -103,7 +103,7 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
         rl.save()
 
         base_url = 'https://crowdcheerdb.herokuapp.com/parse/classes/CurrRunnerLocation/' + objID
-        header = {'X-Parse-Application-Id': 'QXRTROGsVaRn4a3kw4gaFnHGNOsZxXoZ8ULxwZmf'}
+        header = {'X-Parse-Application-Id': 'QXRTROGsVaRn4a3kw4gaFnHGNOsZxXoZ8ULxwZmf', 'Content-type': 'application/json'}
         data = {
             "speed": float(speed),
             "duration": runT,
@@ -150,8 +150,8 @@ def fakeNewCheerFromCSV(csvLines, updateFrequency, length, objID, username, pwd)
         base_url = 'https://crowdcheerdb.herokuapp.com/parse/classes/CurrSpectatorLocation/' + objID
         header = {'X-Parse-Application-Id': 'QXRTROGsVaRn4a3kw4gaFnHGNOsZxXoZ8ULxwZmf'}
         data = {
-            "duration": sl.time,
-            "distance": sl.distance,
+            "duration": runT,
+            "distance": float(dist),
             "location": {
                 "__type": "GeoPoint",
                 "latitude": float(lat), 
