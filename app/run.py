@@ -46,13 +46,13 @@ def caitlinRun():
     return "<h1> Caitlin is running! </h1>"
 
 
-@app.route('/moliriRun/') #bib = 789
-def moliriRun():
+@app.route('/mattRun/') #bib = 789
+def mattRun():
     global csvOfRun
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
-    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "B50jwtYerd", "", "pwd"))
-    return "<h1> Moliri is running! </h1>"
+    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "qt07DiciGv", "mattjustus", "pwd"))
+    return "<h1> Matt is running! </h1>"
 
 
 @app.route('/moliriCheer/')
