@@ -46,7 +46,7 @@ def caitlinRun():
     return "<h1> Caitlin is running! </h1>"
 
 
-@app.route('/mattRun/') #bib = 789
+@app.route('/matt/') #bib = 789
 def mattRun():
     global csvOfRun
     if csvOfRun == None:
