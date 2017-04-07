@@ -51,7 +51,7 @@ def mattRun():
     global csvOfRun
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
-    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "qt07DiciGv", "mattjustus", "pwd"))
+    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "BfgWQFh6S7", "matt", "pwd"))
     return "<h1> Matt is running! </h1>"
 
 
