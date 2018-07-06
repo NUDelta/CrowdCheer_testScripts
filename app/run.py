@@ -55,6 +55,27 @@ def mattRun():
     return "<h1> Matt is running! </h1>"
 
 
+@app.route('/50runners/')
+def fiftyRun():
+    global csvOfRun
+    if csvOfRun == None:
+        csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
+
+    with open('./runners.json', 'r') as fp:
+        runners = json.load(fp)
+        for i in runners:
+            runner = runners[i]
+            objID = runners[i]["objID"]
+            username = runners[i]["username"]
+            pwd = runners[i]["pwd"]
+            print(runner)
+            print(objID)
+            print(username)
+            print(pwd)
+            thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, objID, username, pwd))
+            return "<h1> runners are running! </h1>"
+
+
 @app.route('/moliriCheer/')
 def moliriCheer():
     global csvOfRun
