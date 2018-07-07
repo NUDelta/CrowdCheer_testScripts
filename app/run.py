@@ -25,7 +25,7 @@ def stellaRun():
     global csvOfRun
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
-    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "wl7DOoTpKR", "delta", "pwd"))
+    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "wMHVQT4uak", "delta", "pwd"))
     return "<h1> Stella is running! </h1>"
 
 @app.route('/stella_short/') #bib = 123
@@ -33,26 +33,26 @@ def stellaShortRun():
     global csvOfRun
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnerInEv_short.csv', 'r').readlines()
-    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 112, "wl7DOoTpKR", "delta", "pwd"))
+    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 112, "wMHVQT4uak", "delta", "pwd"))
     return "<h1> Stella is running! </h1>"
 
 
-@app.route('/caitlin/') #bib = 456
-def caitlinRun():
+@app.route('/katherine/') #bib = 456
+def katherineRun():
     global csvOfRun
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
-    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "JkdEbqbNpg", "cgjohnson4", "pwd"))
-    return "<h1> Caitlin is running! </h1>"
+    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "zr6qKr5q7v", "katherine", "pwd"))
+    return "<h1> Katherine is running! </h1>"
 
 
-@app.route('/matt/') #bib = 789
-def mattRun():
+@app.route('/mike/') #bib = 789
+def mikeRun():
     global csvOfRun
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
-    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "BfgWQFh6S7", "matt", "pwd"))
-    return "<h1> Matt is running! </h1>"
+    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "2FOCUOsUyU", "mike", "pwd"))
+    return "<h1> Mike is running! </h1>"
 
 
 @app.route('/50runners/')
@@ -73,7 +73,7 @@ def fiftyRun():
             print(username)
             print(pwd)
             thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, objID, username, pwd))
-            return "<h1> runners are running! </h1>"
+    return "<h1> runners are running! </h1>"
 
 
 @app.route('/moliriCheer/')
@@ -81,7 +81,7 @@ def moliriCheer():
     global csvOfRun
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeSpectatorInEv.csv', 'r').readlines()
-    thread.start_new_thread(fr.fakeNewCheerFromCSV, (csvOfRun, 1, 261, "L8wbhmf3al", "moliri", "pwd"))
+    thread.start_new_thread(fr.fakeNewCheerFromCSV, (csvOfRun, 1, 261, "P8PdmDAQeg", "moliri", "pwd"))
     return "<h1> Moliri is cheering! </h1>"
 
 if __name__ == "__main__":
