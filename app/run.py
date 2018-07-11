@@ -6,6 +6,8 @@ import thread
 app = Flask(__name__)
 os.environ["PARSE_API_ROOT"] = "https://crowdcheerdb.herokuapp.com/parse/1"
 
+#NOTE: objectIDs should not be the user ID, but the currRunnerLocation objectID
+
 #load the file, make it global
 csvOfRun = None
 @app.route('/commonality/')
@@ -25,7 +27,7 @@ def stellaRun():
     global csvOfRun
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
-    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "wMHVQT4uak", "delta", "pwd"))
+    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "HAFXpEDvPk", "stella", "pwd"))
     return "<h1> Stella is running! </h1>"
 
 @app.route('/stella_short/') #bib = 123
@@ -33,7 +35,7 @@ def stellaShortRun():
     global csvOfRun
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnerInEv_short.csv', 'r').readlines()
-    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 112, "wMHVQT4uak", "delta", "pwd"))
+    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 112, "HAFXpEDvPk", "stella", "pwd"))
     return "<h1> Stella is running! </h1>"
 
 
@@ -42,7 +44,7 @@ def katherineRun():
     global csvOfRun
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
-    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "zr6qKr5q7v", "katherine", "pwd"))
+    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "hIGE9ttSrw", "katherine", "pwd"))
     return "<h1> Katherine is running! </h1>"
 
 
@@ -51,7 +53,7 @@ def mikeRun():
     global csvOfRun
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
-    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "2FOCUOsUyU", "mike", "pwd"))
+    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, "yKibF380Ed", "mike", "pwd"))
     return "<h1> Mike is running! </h1>"
 
 
