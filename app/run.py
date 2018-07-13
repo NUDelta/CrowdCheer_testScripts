@@ -67,35 +67,28 @@ def tenRun():
         runners = json.load(fp)
         i = 0
 
-        simulateRunner(runners[0])
-        simulateRunner(runners[1])
-        simulateRunner(runners[2])
-        time.sleep(15)
-        print "GROUP 0"
+        simulateRunner(runners[0], 0)
+        simulateRunner(runners[1], 0)
+        simulateRunner(runners[2], 0)
 
-        simulateRunner(runners[3])
-        time.sleep(15)
-        print "GROUP 1"
+        simulateRunner(runners[3], 15)
 
-        simulateRunner(runners[4])
-        simulateRunner(runners[5])
-        time.sleep(20)
-        print "GROUP 2"
+        simulateRunner(runners[4], 35)
+        simulateRunner(runners[5], 35)
 
-        simulateRunner(runners[6])
-        simulateRunner(runners[7])
-        simulateRunner(runners[8])
-        print "GROUP 3"
+        simulateRunner(runners[6], 50)
+        simulateRunner(runners[7], 50)
+        simulateRunner(runners[8], 50)
 
     return "<h1> runners are running! </h1>"
 
-def simulateRunner(runner):
+def simulateRunner(runner, delay):
     print "runner : %s" % runner
     username = runner["username"]
     pwd = runner["pwd"]
     objID = runner["objID"]
     print "runner : %s, objID : %s, username : %s"  % (runner, objID, username)
-    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, objID, username, pwd))
+    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, objID, username, pwd, delay))
 
 
 @app.route('/moliriCheer/')

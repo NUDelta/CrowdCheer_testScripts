@@ -82,7 +82,7 @@ def fakeNewRun(querySet, updateFrequency, length):
             break
         sleep(updateFrequency)
 
-def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
+def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd, delay):
     '''
     use like this...
     fakeNewLocations(runnerLocations, 1, 40)
@@ -90,6 +90,7 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
     1 is going to send the next location every 1 second,
      and will do this for 40 seconds
     '''
+    sleep(delay)
     u = User.login(username, pwd)
     updateNum = 0
     for line in csvLines[1:]:
@@ -98,7 +99,7 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
                             time = datetime.datetime.now(),
                             user = u,
                             distance = float(dist),
-                            duration = runT, 
+                            duration = runT,
                             speed = float(speed))
         rl.save()
 
@@ -110,9 +111,9 @@ def fakeNewRunFromCSV(csvLines, updateFrequency, length, objID, username, pwd):
             "distance": float(dist),
             "location": {
                 "__type": "GeoPoint",
-                "latitude": float(lat), 
+                "latitude": float(lat),
                 "longitude": float(lon)
-            }, 
+            },
             "time": {
                 "__type": "Date",
                 "iso": datetime.datetime.utcnow().isoformat()
@@ -146,7 +147,7 @@ def fakeNewCheerFromCSV(csvLines, updateFrequency, length, objID, username, pwd)
                             distance = float(dist),
                             duration = runT)
         sl.save()
-        
+
         base_url = 'https://crowdcheerdb.herokuapp.com/parse/classes/CurrSpectatorLocation/' + objID
         header = {'X-Parse-Application-Id': 'QXRTROGsVaRn4a3kw4gaFnHGNOsZxXoZ8ULxwZmf'}
         data = {
@@ -154,7 +155,7 @@ def fakeNewCheerFromCSV(csvLines, updateFrequency, length, objID, username, pwd)
             "distance": float(dist),
             "location": {
                 "__type": "GeoPoint",
-                "latitude": float(lat), 
+                "latitude": float(lat),
                 "longitude": float(lon)
                 }
         }
