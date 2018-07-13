@@ -2,7 +2,7 @@ import os
 import fakeRunner as fr
 import json, httplib
 from flask import Flask,redirect, render_template, json, jsonify, request
-import thread
+import thread, time
 app = Flask(__name__)
 os.environ["PARSE_API_ROOT"] = "https://crowdcheerdb.herokuapp.com/parse/1"
 
@@ -57,24 +57,45 @@ def mikeRun():
     return "<h1> Mike is running! </h1>"
 
 
-@app.route('/50runners/')
-def fiftyRun():
+@app.route('/10runners/')
+def tenRun():
     global csvOfRun
     if csvOfRun == None:
         csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
 
     with open('./runners.json', 'r') as fp:
         runners = json.load(fp)
-        for runner in runners:
-            # for attr, val in runner.iteritems():
-            #     runner = runners[i]
-            print "runner : %s" % runner
-            username = runner["username"]
-            pwd = runner["pwd"]
-            objID = runner["objID"]
-            print "runner : %s, objID : %s, username : %s"  % (runner, objID, username)
-            thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, objID, username, pwd))
+        i = 0
+
+        simulateRunner(runners[0])
+        simulateRunner(runners[1])
+        simulateRunner(runners[2])
+        time.sleep(15)
+        print "GROUP 0"
+
+        simulateRunner(runners[3])
+        time.sleep(15)
+        print "GROUP 1"
+
+        simulateRunner(runners[4])
+        simulateRunner(runners[5])
+        time.sleep(20)
+        print "GROUP 2"
+
+        simulateRunner(runners[6])
+        simulateRunner(runners[7])
+        simulateRunner(runners[8])
+        print "GROUP 3"
+
     return "<h1> runners are running! </h1>"
+
+def simulateRunner(runner):
+    print "runner : %s" % runner
+    username = runner["username"]
+    pwd = runner["pwd"]
+    objID = runner["objID"]
+    print "runner : %s, objID : %s, username : %s"  % (runner, objID, username)
+    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, objID, username, pwd))
 
 
 @app.route('/moliriCheer/')
