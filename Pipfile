@@ -1,0 +1,25 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[packages]
+
+flask = "==0.10.1"
+"jinja2" = "==2.7.3"
+markupsafe = "==0.23"
+werkzeug = "==0.9.6"
+requests = "==2.4.3"
+gunicorn = "==19.3.0"
+parsepy = {git = "https://github.com/milesrichardson/ParsePy.git", editable = true}
+
+
+[dev-packages]
+
+
+
+[requires]
+
+python_version = "2.7"

@@ -65,15 +65,14 @@ def fiftyRun():
 
     with open('./runners.json', 'r') as fp:
         runners = json.load(fp)
-        for i in runners:
-            runner = runners[i]
-            objID = runners[i]["objID"]
-            username = runners[i]["username"]
-            pwd = runners[i]["pwd"]
-            print(runner)
-            print(objID)
-            print(username)
-            print(pwd)
+        for runner in runners:
+            # for attr, val in runner.iteritems():
+            #     runner = runners[i]
+            print "runner : %s" % runner
+            username = runner["username"]
+            pwd = runner["pwd"]
+            objID = runner["objID"]
+            print "runner : %s, objID : %s, username : %s"  % (runner, objID, username)
             thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, objID, username, pwd))
     return "<h1> runners are running! </h1>"
 
