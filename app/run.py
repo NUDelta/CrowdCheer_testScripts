@@ -59,31 +59,32 @@ def mikeRun():
 
 @app.route('/10runners/')
 def tenRun():
-    global csvOfRun
-    if csvOfRun == None:
-        csvOfRun = open('./static/data/fakeRunnerInEv.csv', 'r').readlines()
-
     with open('./runners.json', 'r') as fp:
         runners = json.load(fp)
-        i = 0
 
-        simulateRunner(runners[0], 0)
-        simulateRunner(runners[1], 0)
-        simulateRunner(runners[2], 0)
+        simulateRunner(runners[0], 0, './static/data/fakeRunnerInBelMonEv.csv')
 
-        simulateRunner(runners[3], 25)
-        simulateRunner(runners[4], 25)
+        simulateRunner(runners[1], 0, './static/data/fakeRunnerInEv.csv')
+        simulateRunner(runners[2], 0, './static/data/fakeRunnerInEv.csv')
 
-        simulateRunner(runners[5], 45)
-        simulateRunner(runners[6], 45)
+        simulateRunner(runners[3], 25, './static/data/fakeRunnerInEv.csv')
+        simulateRunner(runners[4], 25, './static/data/fakeRunnerInEv.csv')
 
-        simulateRunner(runners[7], 65)
-        simulateRunner(runners[8], 65)
-        simulateRunner(runners[9], 65)
+        simulateRunner(runners[5], 45, './static/data/fakeRunnerInEv.csv')
+        simulateRunner(runners[6], 45, './static/data/fakeRunnerInEv.csv')
+
+        simulateRunner(runners[7], 65, './static/data/fakeRunnerInEv.csv')
+        simulateRunner(runners[8], 65, './static/data/fakeRunnerInEv.csv')
+        simulateRunner(runners[9], 65, './static/data/fakeRunnerInEv.csv')
 
     return "<h1> runners are running! </h1>"
 
-def simulateRunner(runner, delay):
+def simulateRunner(runner, delay, csvOfRunPath):
+
+    global csvOfRun
+    if csvOfRun == None:
+        csvOfRun = open(csvOfRunPath, 'r').readlines()
+
     print "runner : %s" % runner
     username = runner["username"]
     pwd = runner["pwd"]
