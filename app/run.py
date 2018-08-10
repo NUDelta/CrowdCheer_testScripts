@@ -71,14 +71,15 @@ def tenRun():
         simulateRunner(runners[1], 0)
         simulateRunner(runners[2], 0)
 
-        simulateRunner(runners[3], 15)
+        simulateRunner(runners[3], 25)
+        simulateRunner(runners[4], 25)
 
-        simulateRunner(runners[4], 35)
-        simulateRunner(runners[5], 35)
+        simulateRunner(runners[5], 45)
+        simulateRunner(runners[6], 45)
 
-        simulateRunner(runners[6], 50)
-        simulateRunner(runners[7], 50)
-        simulateRunner(runners[8], 50)
+        simulateRunner(runners[7], 65)
+        simulateRunner(runners[8], 65)
+        simulateRunner(runners[9], 65)
 
     return "<h1> runners are running! </h1>"
 
