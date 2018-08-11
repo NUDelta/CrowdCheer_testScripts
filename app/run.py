@@ -62,19 +62,19 @@ def tenRun():
     with open('./runners.json', 'r') as fp:
         runners = json.load(fp)
 
-        simulateRunner(runners[1], 0, './static/data/fakeRunnerInEv_Original.csv')
-        simulateRunner(runners[2], 0, './static/data/fakeRunnerInEv_Original.csv')
-        simulateRunner(runners[0], 0, './static/data/fakeRunnerInEv_Original.csv') #stella
+        simulateRunner(runners[1], 0, './static/data/fakeRunnerInEv_original.csv')
+        simulateRunner(runners[2], 0, './static/data/fakeRunnerInEv_original.csv')
+        simulateRunner(runners[0], 0, './static/data/fakeRunnerInEv_original.csv') #stella
 
-        simulateRunner(runners[3], 25, './static/data/fakeRunnerInEv_Original.csv')
-        simulateRunner(runners[4], 25, './static/data/fakeRunnerInEv_Original.csv')
+        simulateRunner(runners[3], 25, './static/data/fakeRunnerInEv_original.csv')
+        simulateRunner(runners[4], 25, './static/data/fakeRunnerInEv_original.csv')
 
-        simulateRunner(runners[5], 45, './static/data/fakeRunnerInEv_Original.csv')
-        simulateRunner(runners[6], 45, './static/data/fakeRunnerInEv_Original.csv')
+        simulateRunner(runners[5], 45, './static/data/fakeRunnerInEv_original.csv')
+        simulateRunner(runners[6], 45, './static/data/fakeRunnerInEv_original.csv')
 
-        simulateRunner(runners[7], 65, './static/data/fakeRunnerInEv_Original.csv')
-        simulateRunner(runners[8], 65, './static/data/fakeRunnerInEv_Original.csv')
-        simulateRunner(runners[9], 65, './static/data/fakeRunnerInEv_Original.csv')
+        simulateRunner(runners[7], 65, './static/data/fakeRunnerInEv_original.csv')
+        simulateRunner(runners[8], 65, './static/data/fakeRunnerInEv_original.csv')
+        simulateRunner(runners[9], 65, './static/data/fakeRunnerInEv_original.csv')
 
     return "<h1> runners are running! </h1>"
 
