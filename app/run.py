@@ -62,24 +62,23 @@ def tenRun():
     with open('./runners.json', 'r') as fp:
         runners = json.load(fp)
 
-        # simulateRunner(runners[1], 0, './static/data/fakeRunnerInEv_original.csv')
-        simulateRunner(runners[1], 0, './static/data/fakeRunnerInBelMonEv.csv')
-        simulateRunner(runners[2], 0, './static/data/fakeRunnerInBelMonEv.csv')
-        simulateRunner(runners[0], 0, './static/data/fakeRunnerInBelMonEv.csv') #stella
+        simulateRunner(runners[1], 0, './static/data/fakeRunnerInEv_original.csv', 196)
+        simulateRunner(runners[2], 0, './static/data/fakeRunnerInEv_original.csv', 196)
+        simulateRunner(runners[0], 0, './static/data/fakeRunnerInBelMonEv.csv', 266) #stella
 
-        simulateRunner(runners[3], 25, './static/data/fakeRunnerInBelMonEv.csv')
-        simulateRunner(runners[4], 25, './static/data/fakeRunnerInBelMonEv.csv')
+        simulateRunner(runners[3], 25, './static/data/fakeRunnerInEv_original.csv', 196)
+        simulateRunner(runners[4], 25, './static/data/fakeRunnerInEv_original.csv', 196)
 
-        simulateRunner(runners[5], 45, './static/data/fakeRunnerInBelMonEv.csv')
-        simulateRunner(runners[6], 45, './static/data/fakeRunnerInBelMonEv.csv')
+        simulateRunner(runners[5], 45, './static/data/fakeRunnerInEv_original.csv', 196)
+        simulateRunner(runners[6], 45, './static/data/fakeRunnerInEv_original.csv', 196)
 
-        simulateRunner(runners[7], 65, './static/data/fakeRunnerInBelMonEv.csv')
-        simulateRunner(runners[8], 65, './static/data/fakeRunnerInBelMonEv.csv')
-        simulateRunner(runners[9], 65, './static/data/fakeRunnerInBelMonEv.csv')
+        simulateRunner(runners[7], 65, './static/data/fakeRunnerInBelMonEv.csv', 266)
+        simulateRunner(runners[8], 65, './static/data/fakeRunnerInBelMonEv.csv', 266)
+        simulateRunner(runners[9], 65, './static/data/fakeRunnerInBelMonEv.csv', 266)
 
     return "<h1> runners are running! </h1>"
 
-def simulateRunner(runner, delay, csvOfRunPath):
+def simulateRunner(runner, delay, csvOfRunPath, lastLine):
 
     global csvOfRun
     if csvOfRun == None:
@@ -91,7 +90,7 @@ def simulateRunner(runner, delay, csvOfRunPath):
     objID = runner["objID"]
     print "runner : %s, objID : %s, username : %s"  % (runner, objID, username)
     # thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 196, objID, username, pwd, delay))
-    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, 266, objID, username, pwd, delay))
+    thread.start_new_thread(fr.fakeNewRunFromCSV, (csvOfRun, 1, lastLine, objID, username, pwd, delay))
 
 
 @app.route('/moliriCheer/')
