@@ -64,7 +64,7 @@ def tenRun():
 
         simulateRunner(runners[1], 0, './static/data/fakeRunnerInEv_original.csv', 196)
         simulateRunner(runners[2], 0, './static/data/fakeRunnerInEv_original.csv', 196)
-        simulateRunner(runners[0], 0, './static/data/fakeRunnerInBelMonEv.csv', 266) #stella
+        simulateRunner(runners[0], 0, './static/data/fakeRunnerInEv_original.csv', 196) #stella
 
         simulateRunner(runners[3], 25, './static/data/fakeRunnerInEv_original.csv', 196)
         simulateRunner(runners[4], 25, './static/data/fakeRunnerInEv_original.csv', 196)
@@ -72,9 +72,9 @@ def tenRun():
         simulateRunner(runners[5], 45, './static/data/fakeRunnerInEv_original.csv', 196)
         simulateRunner(runners[6], 45, './static/data/fakeRunnerInEv_original.csv', 196)
 
-        simulateRunner(runners[7], 65, './static/data/fakeRunnerInBelMonEv.csv', 266)
-        simulateRunner(runners[8], 65, './static/data/fakeRunnerInBelMonEv.csv', 266)
-        simulateRunner(runners[9], 65, './static/data/fakeRunnerInBelMonEv.csv', 266)
+        simulateRunner(runners[7], 65, './static/data/fakeRunnerInEv_original.csv', 196)
+        simulateRunner(runners[8], 65, './static/data/fakeRunnerInEv_original.csv', 196)
+        simulateRunner(runners[9], 65, './static/data/fakeRunnerInEv_original.csv', 196)
 
     return "<h1> runners are running! </h1>"
 
