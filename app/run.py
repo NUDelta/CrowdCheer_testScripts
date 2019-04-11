@@ -62,9 +62,9 @@ def tenRun():
     with open('./runners.json', 'r') as fp:
         runners = json.load(fp)
 
+        simulateRunner(runners[0], 0, './static/data/fakeRunnerInBelMonEv.csv', 266) #primary runner
         simulateRunner(runners[1], 0, './static/data/fakeRunnerInEv_original.csv', 196)
         simulateRunner(runners[2], 0, './static/data/fakeRunnerInEv_original.csv', 196)
-        simulateRunner(runners[0], 0, './static/data/fakeRunnerInEv_original.csv', 196) #stella
 
         simulateRunner(runners[3], 25, './static/data/fakeRunnerInEv_original.csv', 196)
         simulateRunner(runners[4], 25, './static/data/fakeRunnerInEv_original.csv', 196)
