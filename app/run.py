@@ -63,19 +63,18 @@ def tenRun():
         runners = json.load(fp)
 
         simulateRunner(runners[0], 0, './static/data/fakeRunnerInBelMonEv.csv', 266) #primary runner
+        simulateRunner(runners[1], 0, './static/data/fakeRunnerInEv_original.csv', 196)
+        simulateRunner(runners[2], 0, './static/data/fakeRunnerInEv_original.csv', 196)
 
-        simulateRunner(runners[1], 20, './static/data/fakeRunnerInEv_original.csv', 196)
-        simulateRunner(runners[2], 20, './static/data/fakeRunnerInEv_original.csv', 196)
+        simulateRunner(runners[3], 20, './static/data/fakeRunnerInEv_original.csv', 196)
+        simulateRunner(runners[4], 20, './static/data/fakeRunnerInEv_original.csv', 196)
 
-        simulateRunner(runners[3], 40, './static/data/fakeRunnerInEv_original.csv', 196)
-        simulateRunner(runners[4], 40, './static/data/fakeRunnerInEv_original.csv', 196)
+        simulateRunner(runners[5], 40, './static/data/fakeRunnerInEv_original.csv', 196)
+        simulateRunner(runners[6], 40, './static/data/fakeRunnerInEv_original.csv', 196)
 
-        simulateRunner(runners[5], 60, './static/data/fakeRunnerInEv_original.csv', 196)
-        simulateRunner(runners[6], 60, './static/data/fakeRunnerInEv_original.csv', 196)
-
-        simulateRunner(runners[7], 80, './static/data/fakeRunnerInEv_original.csv', 196)
-        simulateRunner(runners[8], 80, './static/data/fakeRunnerInEv_original.csv', 196)
-        simulateRunner(runners[9], 80, './static/data/fakeRunnerInEv_original.csv', 196)
+        simulateRunner(runners[7], 60, './static/data/fakeRunnerInEv_original.csv', 196)
+        simulateRunner(runners[8], 60, './static/data/fakeRunnerInEv_original.csv', 196)
+        simulateRunner(runners[9], 60, './static/data/fakeRunnerInEv_original.csv', 196)
 
     return "<h1> runners are running! </h1>"
 
