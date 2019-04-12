@@ -79,7 +79,7 @@ def tenRun():
 
 def simulateRunner(runner, delay, csvOfRunPath, lastLine):
 
-    global csvOfRun
+    csvOfRun == None
     if csvOfRun == None:
         csvOfRun = open(csvOfRunPath, 'r').readlines()
 
