@@ -79,9 +79,8 @@ def tenRun():
 
 def simulateRunner(runner, delay, csvOfRunPath, lastLine):
 
-    csvOfRun == None
-    if csvOfRun == None:
-        csvOfRun = open(csvOfRunPath, 'r').readlines()
+    global csvOfRun
+    csvOfRun = open(csvOfRunPath, 'r').readlines()
 
     print "runner : %s" % runner
     username = runner["username"]
